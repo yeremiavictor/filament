@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Produk extends Model
 {
     use HasFactory;
-    protected $fillabe =[
+    protected $fillable =[
         'foto','nama','deskripsi','qty','harga'
     ];
 }
