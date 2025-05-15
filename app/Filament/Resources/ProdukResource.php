@@ -24,6 +24,47 @@ class ProdukResource extends Resource
         return $form
             ->schema([
                 //
+
+                 //grid
+                    Forms\Components\Grid::make(1)
+                    ->schema([
+                        //foto
+                        Forms\Components\FileUpload::make('foto')
+                        ->label('Foto')
+                        ->required(),
+
+                        //nama
+                        Forms\Components\TextInput::make('nama')
+                        ->label('Nama')
+                        ->placeholder('Nama Produk')
+                        ->required(),
+                    ]),
+
+                    //grid
+                    Forms\Components\Grid::make(2)
+                    ->schema([
+                        //qty
+                        Forms\Components\TextInput::make('qty')
+                        ->label('Kuantitas')
+                        ->numeric()
+                        ->required(),
+
+                        //harga
+                        Forms\Components\TextInput::make('harga')
+                        ->label('Harga')
+                        ->numeric()
+                        ->required(),
+
+                    ]),
+
+                    //grid
+                    Forms\Components\Grid::make(1)
+                    ->schema([
+                        //deskripsi
+                        Forms\Components\Textarea::make('deskripsi')
+                        ->label('Deskrispi')
+                        ->required(),
+                    ])
             ]);
     }
 
@@ -32,6 +73,11 @@ class ProdukResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\ImageColumn::make('foto'),
+                Tables\Columns\TextColumn::make('nama')->searchable(),
+                Tables\Columns\TextColumn::make('deskripsi'),
+                Tables\Columns\TextColumn::make('harga'),
+                Tables\Columns\TextColumn::make('qty'),
             ])
             ->filters([
                 //
